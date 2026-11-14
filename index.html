@@ -1,0 +1,1009 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daydream ☁️</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=YP5e6a6Q-HIf0zTzLy-9dBmbwqvw_xX-Goi4r-go-dwBAomdLdaojcYdHRyutVUL6bteY73KexmMQHZWWIGXTCdRT5bT0ahhpXdmIcjeYpcHBAXS5zyMobPTyxghxI9BNgF4h6UOLUgPHrs2ZDmURBVbnbMbL1mf6XZLn6-sr45Q5vTd-WpFhxsgtIh5trLJx1U7xETPOdeXar4BWScD8RD9KFlJdYMzuMauX1BgO696YwS71zQuWlYX-THWPRP_1McU91CtNGJFLnWRAub0S6WXoPC01GEpq3AB2FVSbY13xzt9QqQNd7bJ4wLQsrzVedtF_hqfw0mlaVOre4N_CA" charset="UTF-8"></script><style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
+
+:root {
+  --pink:#d9a0a8; --rose:#b8757e; --cream:#fffaf4;
+  --lavender:#f3e7e2; --ink:#594744; --muted:#a58f89;
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:#f8f0eb;color:var(--ink);font-family:'DM Sans',sans-serif}
+.app{max-width:1100px;min-height:100vh;margin:auto;display:flex;background:var(--cream);box-shadow:0 0 50px #cbb5a933}
+.sidebar{width:225px;padding:35px 20px;background:#fbf1ed;border-right:1px solid #efe1da;flex-shrink:0}
+.logo{font:30px 'Playfair Display',serif;color:#b8757e;margin:0 0 5px 8px}
+.tagline{color:var(--muted);font-size:12px;margin:0 0 45px 9px}
+.nav-label{font-size:10px;letter-spacing:2px;color:#b8a5af;margin:25px 10px 12px}
+.nav button{display:block;width:100%;border:0;background:transparent;padding:12px 14px;margin:5px 0;border-radius:13px;text-align:left;color:#8e7c87;font:inherit;cursor:pointer}
+.nav button:hover,.nav button.active{background:#f1dfdc;color:#9e6269}
+.main{flex:1;padding:45px 55px;min-width:0}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:15px}
+.date{color:var(--muted);font-size:13px}
+.avatar{width:39px;height:39px;border-radius:50%;background:#f0ddd8;display:grid;place-items:center}
+h1{font:500 38px 'Playfair Display',serif;margin:30px 0 8px;color:#70534f}
+.subtitle{color:var(--muted);margin:0 0 30px;font-size:14px}
+.hero{background:linear-gradient(120deg,#f3dfdc,#f4e9df);border-radius:22px;padding:27px 30px;position:relative;overflow:hidden;margin-bottom:25px}
+.hero h2{font:500 23px 'Playfair Display',serif;margin:0 0 8px}
+.hero p{color:#8d706b;font-size:13px;margin:0;line-height:1.7;max-width:330px}
+.sparkle{position:absolute;right:35px;top:15px;font-size:60px;opacity:.7}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}
+.card,.entry-card{background:white;border:1px solid #efe3dc;border-radius:19px;padding:22px}
+.card{min-height:145px}
+.card h3{font:500 19px 'Playfair Display',serif;margin:0 0 9px}
+.card p{color:var(--muted);font-size:13px;line-height:1.6;margin:0}
+.card-icon{font-size:22px;margin-bottom:13px}
+.action{border:0;border-radius:12px;padding:11px 16px;background:#f1dfdc;color:#9e6269;cursor:pointer;font:600 12px 'DM Sans';margin-top:15px}
+.action:hover{background:#ecd2dd}
+.secondary{background:#f7efeb;color:#927773}
+.danger{background:#faeeee;color:#b36d7b}
+.view-title{font:500 32px 'Playfair Display',serif;margin:20px 0 8px}
+.field-label{display:block;font-size:12px;color:#927773;margin:18px 0 7px}
+input,textarea{width:100%;border:1px solid #eadbd4;border-radius:13px;padding:13px;background:white;color:var(--ink);font:14px 'DM Sans';outline:none}
+input:focus,textarea:focus{border-color:var(--pink)}
+textarea{min-height:160px;resize:vertical;line-height:1.7}
+.entry-card{margin-top:13px;padding:18px 20px}
+.entry-card h3{font:500 19px 'Playfair Display',serif;margin:0 0 5px}
+.entry-card p{font-size:13px;color:var(--muted);line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
+.entry-date{font-size:11px;color:#b29eaa}
+.entry-actions{display:flex;gap:8px;flex-wrap:wrap}
+.entry-actions button{margin-top:8px}
+.empty{text-align:center;padding:30px 15px;color:var(--muted);font-size:13px;background:#fff;border:1px dashed #ead9e1;border-radius:17px;margin-top:16px}
+.task{display:flex;gap:10px;align-items:center;padding:13px 0;border-bottom:1px solid #efe4de;font-size:14px}
+.task input{width:auto;accent-color:#b8757e}
+.task.done span{text-decoration:line-through;color:#b8aab1}
+.mood-calendar {
+  background:white;
+  border:1px solid #efe3dc;
+  border-radius:19px;
+  padding:20px;
+  margin-top:20px;
+}
+.calendar-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+.calendar-header h3 {
+  font:500 20px 'Playfair Display',serif;
+  margin:0;
+}
+.calendar-header button {
+  border:0;
+  background:#f7eaf0;
+  color:#9e6269;
+  border-radius:10px;
+  padding:8px 13px;
+  cursor:pointer;
+}
+.calendar-grid {
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:7px;
+  text-align:center;
+}
+.calendar-day {
+  font-size:11px;
+  color:#ad9ba6;
+  padding:8px 0;
+}
+.calendar-date {
+  border:0;
+  background:#fbf5f0;
+  border-radius:12px;
+  min-height:43px;
+  cursor:pointer;
+  color:var(--ink);
+  font:13px 'DM Sans';
+}
+.calendar-date:hover,.calendar-date.selected {
+  outline:2px solid #dba5bb;
+}
+.calendar-date.today {
+  background:#f1dfdc;
+}
+.mood-options {
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin:15px 0;
+}
+.mood-choice {
+  border:1px solid #f0e2e8;
+  background:white;
+  border-radius:13px;
+  padding:12px;
+  cursor:pointer;
+  font-size:22px;
+}
+.mood-choice.selected {
+  background:#f1dfdc;
+  border-color:#c88e91;
+}
+.mood-summary {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:18px;
+}
+.mood-stat {
+  background:#f8eeea;
+  padding:12px 16px;
+  border-radius:13px;
+  font-size:13px;
+}
+
+.home-summary{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:17px 0 28px}
+.mini-card{min-height:150px}
+.intention-card{margin:18px 0}
+.intention-card input{margin-top:16px}
+.saved-note{font-size:12px;color:#9e6269;margin-top:9px;min-height:16px}
+.home-section-title{font:500 23px 'Playfair Display',serif;margin:28px 0 14px}
+
+/* Cycle tracker */
+.cycle-legend{display:flex;flex-wrap:wrap;gap:14px;margin:14px 0;color:var(--muted);font-size:12px}
+.legend-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
+.cycle-date.actual{background:#eac9c5;color:#765653}
+.cycle-date.predicted{background:#f1e8e4;color:#766785}
+.cycle-date.start{outline:2px solid #b8757e}
+.cycle-controls{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.cycle-controls .card{min-height:0}
+.cycle-controls input{margin-top:8px}
+.cycle-selected{margin-top:16px;padding:17px;background:#fbf5f0;border-radius:15px}
+.cycle-selected p{margin:0 0 8px;color:var(--muted);font-size:13px}
+.cycle-note{margin-top:18px}
+.cycle-note textarea{min-height:90px}
+.cycle-prediction{background:linear-gradient(120deg,#f4e1dc,#f5ece3);border-radius:18px;padding:20px;margin:18px 0}
+.cycle-prediction h3{font:500 20px 'Playfair Display',serif;margin:0 0 8px}
+.cycle-prediction p{font-size:13px;color:#8d706b;line-height:1.6;margin:0}
+.cycle-action-row{display:flex;gap:8px;flex-wrap:wrap}
+.focus-wrap{max-width:650px;margin:20px auto;text-align:center}
+.focus-orb{width:min(270px,70vw);aspect-ratio:1;border-radius:50%;margin:25px auto;background:radial-gradient(circle at 35% 30%,#fff9fb,#f3dfe8 65%,#e8dff2);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 15px 40px #d9bdb555}
+.focus-time{font:500 clamp(48px,10vw,68px) 'Playfair Display',serif;color:#77586a;font-variant-numeric:tabular-nums}
+.focus-label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#a17e91;margin-top:6px}
+.focus-buttons{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.focus-buttons .action{min-width:105px}
+.focus-presets{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:16px 0}
+.focus-presets button{border:1px solid #eadbd4;background:white;color:#927773;padding:9px 14px;border-radius:12px;cursor:pointer}
+.focus-presets button.active{background:#f1dfdc;color:#9e6269;border-color:#dba5bb}
+.focus-task{max-width:420px;margin:22px auto;text-align:left}
+.focus-task label{display:block;font-size:12px;color:#927773;margin-bottom:8px}
+.focus-complete{color:#9e6269;font-size:13px;min-height:20px;margin-top:12px}
+@media(max-width:700px){
+  .cycle-controls{grid-template-columns:1fr}
+  .nav{overflow-x:auto;gap:2px;justify-content:flex-start}
+  .nav button{flex:0 0 auto;padding:11px 9px;font-size:10px}
+}
+
+@media(max-width:700px){.home-summary{grid-template-columns:1fr}}
+
+@media(max-width:700px){
+.app{display:block;padding-bottom:75px}
+.sidebar{position:fixed;z-index:5;bottom:0;left:0;right:0;width:100%;height:67px;padding:6px 8px;border-top:1px solid #f2e6e9;border-right:0}
+.logo,.tagline,.nav-label{display:none}
+.nav{display:flex;justify-content:space-around}
+.nav button{text-align:center;padding:12px 5px;margin:0;font-size:11px;width:auto}
+.main{padding:28px 20px}
+h1{font-size:32px}
+.grid{grid-template-columns:1fr}
+.sparkle{right:18px}
+}
+
+/* Daydream warm rose refresh */
+:root{color-scheme:light}
+body{background:#f8f0eb}
+.card,.entry-card{box-shadow:0 5px 18px #9b75600a}
+.action{transition:transform .15s ease,background .15s ease}
+.action:hover{transform:translateY(-1px);background:#ead0cd}
+.nav button:hover,.nav button.active{background:#f1dfdc;color:#9e6269}
+
+/* Personal organiser */
+.list-welcome{background:linear-gradient(115deg,#f2dfdc,#f7eee5);border:1px solid #efdfd8;border-radius:21px;padding:23px 25px;margin:18px 0}
+.list-welcome h2{font:500 22px 'Playfair Display',serif;margin:0 0 6px;color:#70534f}
+.list-welcome p{margin:0;color:#927773;font-size:13px;line-height:1.6}
+.list-progress{height:7px;background:#eadbd5;border-radius:20px;overflow:hidden;margin-top:15px}
+.list-progress-fill{height:100%;background:#bd8586;border-radius:20px;transition:width .2s}
+.list-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:17px 0}
+.list-stat{background:#fff;border:1px solid #efe3dc;border-radius:16px;padding:14px}
+.list-stat strong{display:block;font:500 24px 'Playfair Display',serif;color:#795c57}
+.list-stat span{font-size:11px;color:#a58f89}
+.list-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 15px}
+.list-tabs button{border:1px solid #eadbd4;background:#fffaf6;color:#927773;padding:9px 14px;border-radius:20px;cursor:pointer;font:500 12px 'DM Sans'}
+.list-tabs button.active{background:#ead1cf;border-color:#d9b2ae;color:#85565b}
+.list-add{background:#fff;border:1px solid #efe3dc;border-radius:18px;padding:17px;margin:14px 0 20px}
+.list-add-row{display:grid;grid-template-columns:minmax(0,1fr) 135px;gap:9px}
+.list-add-bottom{display:grid;grid-template-columns:1fr 1fr auto;gap:9px;align-items:center;margin-top:9px}
+.list-add input,.list-add select{min-width:0}
+.list-add select{border:1px solid #eadbd4;border-radius:12px;padding:11px;background:#fffaf6;color:#795f5a;font:13px 'DM Sans'}
+.list-section-title{font:500 19px 'Playfair Display',serif;color:#70534f;margin:22px 0 10px}
+.list-item{display:flex;align-items:center;gap:11px;padding:13px 14px;background:#fff;border:1px solid #f0e6e0;border-radius:14px;margin:8px 0}
+.list-item input[type=checkbox]{width:17px;height:17px;accent-color:#b8757e;flex:0 0 auto}
+.list-item-main{flex:1;min-width:0}
+.list-item-title{font-size:13px;color:#70534f;overflow-wrap:anywhere}
+.list-item.done .list-item-title{text-decoration:line-through;color:#b5a49e}
+.list-item-meta{font-size:10px;color:#ad9891;margin-top:4px}
+.list-delete{border:0;background:transparent;color:#b59e98;cursor:pointer;font-size:18px;padding:5px 8px}
+.list-empty{background:#fffaf6;border:1px dashed #e5d2ca;border-radius:15px;padding:24px;text-align:center;color:#a58f89;font-size:13px;line-height:1.6}
+.list-category{font-size:10px;background:#f7eeea;color:#96756e;padding:4px 8px;border-radius:20px;white-space:nowrap}
+@media(max-width:700px){
+ .list-stats{gap:8px}.list-stat{padding:11px}.list-add-row{grid-template-columns:1fr}.list-add-bottom{grid-template-columns:1fr 1fr}.list-add-bottom button{grid-column:1/-1}
+}
+
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo">daydream ☁️</div>
+    <p class="tagline">a little space of your own</p>
+    <div class="nav-label">YOUR SPACE</div>
+    <nav class="nav">
+      <button class="active" onclick="showPage('home',this)">☁️ &nbsp; Today</button>
+      <button onclick="showPage('journal',this)">♡ &nbsp; Journal</button>
+      <button onclick="showPage('dreams',this)">☾ &nbsp; Dreams</button>
+      <button onclick="showPage('lists',this)">✧ &nbsp; My lists</button>
+      <button onclick="showPage('mood',this)">♡ &nbsp; My mood</button>
+      <button onclick="showPage('cycle',this)">🌷 &nbsp; Cycle</button>
+      <button onclick="showPage('focus',this)">✧ &nbsp; Focus</button>
+    </nav>
+  </aside>
+  <main class="main" id="content"></main>
+</div>
+
+<script>
+const content=document.getElementById('content');
+const today=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+let editingId=null;
+let currentType='journal';
+let moodMonth=new Date();
+let selectedMoodDate=localDate();
+let selectedMoodValue='';
+function localDate(){
+  const d=new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function getEntries(type){
+  const key='daydream-entries-'+type;
+  let entries=JSON.parse(localStorage.getItem(key)||'null');
+
+  // Preserve any writing from the first version of Daydream.
+  if(entries===null){
+    const oldKey=type==='journal'?'daydream-journal':'daydream-dreams';
+    const oldText=localStorage.getItem(oldKey);
+    entries=oldText&&oldText.trim()?[
+      {id:Date.now(),title:'My first entry',text:oldText,date:localDate(),created:new Date().toISOString()}
+    ]:[];
+    localStorage.setItem(key,JSON.stringify(entries));
+  }
+  return entries;
+}
+
+function saveEntries(type,entries){
+  localStorage.setItem('daydream-entries-'+type,JSON.stringify(entries));
+}
+
+
+function renderHome(){
+  const hour=new Date().getHours();
+  const greeting=hour<12?'Good morning':hour<18?'Good afternoon':'Good evening';
+  const dateKey=localDate();
+  const intentions=JSON.parse(localStorage.getItem('daydream-intentions')||'{}');
+  const todaysIntention=intentions[dateKey]||'';
+  const todaysMood=getMoods()[dateKey];
+  const tasks=getTasks();
+  const completed=tasks.filter(t=>t.done).length;
+
+  content.innerHTML=`
+    <div class="topline"><span class="date">${today}</span><span class="avatar">🌷</span></div>
+    <h1>${greeting}, lovely.</h1>
+    <p class="subtitle">Welcome back to your little corner of the world.</p>
+    <section class="hero">
+      <span class="sparkle">☁️</span>
+      <h2>Make room for a little magic.</h2>
+      <p>You don't need to do everything today. Just choose one small thing and begin.</p>
+    </section>
+    <section class="card intention-card">
+      <div class="card-icon">✧</div>
+      <h3>Today's little intention</h3>
+      <p>A gentle focus for the day. It can be something tiny.</p>
+      <input id="dailyIntention" maxlength="180" placeholder="Today, I want to..." value="">
+      <button class="action" onclick="saveIntention()">Save my intention ♡</button>
+      <p id="intentionSaved" class="saved-note"></p>
+    </section>
+    <div class="home-summary">
+      <section class="card mini-card">
+        <div class="card-icon">♡</div><h3>Today's mood</h3>
+        <p id="todayMoodText"></p>
+        <button class="action secondary" onclick="go('mood')">Check in →</button>
+      </section>
+      <section class="card mini-card">
+        <div class="card-icon">☑</div><h3>Little plans</h3>
+        <p>${completed} of ${tasks.length} tasks completed</p>
+        <button class="action secondary" onclick="go('lists')">View my list →</button>
+      </section>
+    </div>
+    <h2 class="home-section-title">A little space to create ♡</h2>
+    <div class="grid">
+      <section class="card"><div class="card-icon">♡</div><h3>Dear diary</h3><p>Write down whatever is on your mind.</p><button class="action" onclick="go('journal')">Write an entry →</button></section>
+      <section class="card"><div class="card-icon">☾</div><h3>Dream journal</h3><p>Keep little pieces of your dream world.</p><button class="action" onclick="go('dreams')">Open dreams →</button></section>
+    </div>
+  `;
+
+  document.getElementById('dailyIntention').value=todaysIntention;
+  document.getElementById('intentionSaved').textContent=todaysIntention?'Your intention is saved for today ♡':'';
+  const moodText=document.getElementById('todayMoodText');
+  const moodName=todaysMood?.emoji?moodChoices.find(m=>m.emoji===todaysMood.emoji)?.name:'';
+  moodText.textContent=moodName?`${todaysMood.emoji} ${moodName}`:'You haven’t checked in yet today.';
+}
+
+function saveIntention(){
+  const field=document.getElementById('dailyIntention');
+  const intentions=JSON.parse(localStorage.getItem('daydream-intentions')||'{}');
+  intentions[localDate()]=field.value.trim();
+  localStorage.setItem('daydream-intentions',JSON.stringify(intentions));
+  document.getElementById('intentionSaved').textContent=field.value.trim()?'Your intention is saved for today ♡':'Your intention was cleared.';
+}
+
+function showPage(page,button){
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+  if(button)button.classList.add('active');
+
+  if(page==='home'){
+    editingId=null;
+    renderHome();
+  }
+
+  if(page==='journal'||page==='dreams'){
+    currentType=page;
+    editingId=null;
+    renderDiary();
+  }
+
+  if(page==='lists'){
+    renderTasks();
+  }
+
+  if(page==='mood'){
+    renderMood();
+  }
+
+  if(page==='cycle'){
+    renderCycle();
+  }
+
+  if(page==='focus'){
+    renderFocus();
+  }
+}
+
+function go(page){
+  const buttons=[...document.querySelectorAll('.nav button')];
+  const index={home:0,journal:1,dreams:2,lists:3,mood:4,cycle:5,focus:6}[page];
+  showPage(page,buttons[index]);
+}
+
+function renderDiary(){
+  const isDream=currentType==='dreams';
+  const title=isDream?'Dream journal':'Dear diary...';
+  const entries=getEntries(currentType);
+  const selected=editingId===null?null:entries.find(e=>e.id===editingId);
+
+  content.innerHTML=`
+    <div class="topline"><span class="date">${today}</span><span class="avatar">${isDream?'☾':'♡'}</span></div>
+    <h1 class="view-title">${title}</h1>
+    <p class="subtitle">${isDream?'Little stories from another world.':'A place for all your thoughts.'}</p>
+    <section class="card">
+      <h3>${selected?'Edit your entry':'A new little entry'}</h3>
+      <label class="field-label" for="entryTitle">Title</label>
+      <input id="entryTitle" maxlength="100" placeholder="${isDream?'Give your dream a name...':'A title for today...'}">
+      <label class="field-label" for="entryDate">Date</label>
+      <input id="entryDate" type="date">
+      <label class="field-label" for="entryText">Your thoughts</label>
+      <textarea id="entryText" placeholder="${isDream?'Describe your dream...':'What is on your mind?'}"></textarea>
+      <button class="action" onclick="saveEntry()">${selected?'Update entry':'Save entry ♡'}</button>
+      ${selected?'<button class="action secondary" onclick="cancelEdit()">Cancel</button>':''}
+    </section>
+    <h2 class="view-title" style="font-size:24px;margin-top:32px">Your ${isDream?'dreams':'memories'}</h2>
+    <p class="subtitle">${entries.length} ${entries.length===1?'entry':'entries'} saved</p>
+    <div id="entryList"></div>`;
+
+  if(selected){
+    document.getElementById('entryTitle').value=selected.title;
+    document.getElementById('entryDate').value=selected.date;
+    document.getElementById('entryText').value=selected.text;
+  }else{
+    document.getElementById('entryDate').value=localDate();
+  }
+  renderEntryList();
+}
+
+function renderEntryList(){
+  const list=document.getElementById('entryList');
+  const entries=getEntries(currentType).sort((a,b)=>b.date.localeCompare(a.date)||b.id-a.id);
+  list.innerHTML='';
+
+  if(!entries.length){
+    list.innerHTML='<div class="empty">Nothing here just yet. Your first entry is waiting to be written ♡</div>';
+    return;
+  }
+
+  entries.forEach(entry=>{
+    const card=document.createElement('article');
+    card.className='entry-card';
+
+    const date=document.createElement('div');
+    date.className='entry-date';
+    date.textContent=new Date(entry.date+'T12:00:00').toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+
+    const heading=document.createElement('h3');
+    heading.textContent=entry.title||'Untitled entry';
+
+    const preview=document.createElement('p');
+    preview.textContent=entry.text.length>180?entry.text.slice(0,180)+'…':entry.text;
+
+    const actions=document.createElement('div');
+    actions.className='entry-actions';
+
+    const edit=document.createElement('button');
+    edit.className='action secondary';
+    edit.textContent='Edit';
+    edit.onclick=()=>editEntry(entry.id);
+
+    const remove=document.createElement('button');
+    remove.className='action danger';
+    remove.textContent='Delete';
+    remove.onclick=()=>deleteEntry(entry.id);
+
+    actions.append(edit,remove);
+    card.append(date,heading,preview,actions);
+    list.append(card);
+  });
+}
+
+function saveEntry(){
+  const title=document.getElementById('entryTitle').value.trim();
+  const text=document.getElementById('entryText').value.trim();
+  const date=document.getElementById('entryDate').value;
+
+  if(!text){
+    alert('Write a little something before saving ♡');
+    return;
+  }
+  if(!date){
+    alert('Please choose a date for your entry.');
+    return;
+  }
+
+  const entries=getEntries(currentType);
+  if(editingId!==null){
+    const entry=entries.find(e=>e.id===editingId);
+    if(entry){entry.title=title;entry.text=text;entry.date=date;}
+  }else{
+    entries.push({id:Date.now(),title,text,date,created:new Date().toISOString()});
+  }
+  saveEntries(currentType,entries);
+  editingId=null;
+  renderDiary();
+}
+
+function editEntry(id){
+  editingId=id;
+  renderDiary();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function cancelEdit(){
+  editingId=null;
+  renderDiary();
+}
+
+function deleteEntry(id){
+  if(!confirm('Delete this entry? This cannot be undone.'))return;
+  saveEntries(currentType,getEntries(currentType).filter(e=>e.id!==id));
+  if(editingId===id)editingId=null;
+  renderDiary();
+}
+
+let taskFilter='all';
+const taskCategories=['Personal','Study','Creative','Errands'];
+function getTasks(){
+  const tasks=JSON.parse(localStorage.getItem('daydream-tasks')||'[]');
+  return tasks.map((t,i)=>({...t,id:t.id??i,category:t.category||'Personal',due:t.due||'',priority:t.priority||'Normal'}));
+}
+function storeTasks(tasks){localStorage.setItem('daydream-tasks',JSON.stringify(tasks));}
+function addTask(){
+  const input=document.getElementById('newTask');
+  if(!input||!input.value.trim())return;
+  const tasks=getTasks();
+  tasks.push({
+    id:Date.now()+Math.random(),
+    text:input.value.trim(),
+    done:false,
+    category:document.getElementById('taskCategory').value,
+    due:document.getElementById('taskDue').value,
+    priority:document.getElementById('taskPriority').value
+  });
+  storeTasks(tasks);
+  renderTasks();
+}
+function toggleTask(id){
+  const tasks=getTasks();
+  const task=tasks.find(t=>String(t.id)===String(id));
+  if(task)task.done=!task.done;
+  storeTasks(tasks);renderTasks();
+}
+function deleteTask(id){
+  if(!confirm('Remove this task from your list?'))return;
+  storeTasks(getTasks().filter(t=>String(t.id)!==String(id)));
+  renderTasks();
+}
+function setTaskFilter(filter){taskFilter=filter;renderTasks();}
+function renderTasks(){
+  const tasks=getTasks();
+  const done=tasks.filter(t=>t.done).length;
+  const open=tasks.length-done;
+  const percent=tasks.length?Math.round(done/tasks.length*100):0;
+  let visible=tasks;
+  if(taskFilter==='open')visible=tasks.filter(t=>!t.done);
+  else if(taskFilter==='done')visible=tasks.filter(t=>t.done);
+  else if(taskCategories.includes(taskFilter))visible=tasks.filter(t=>t.category===taskFilter);
+  const active=visible.filter(t=>!t.done);
+  const completed=visible.filter(t=>t.done);
+  const renderItem=t=>`
+    <div class="list-item ${t.done?'done':''}">
+      <input type="checkbox" ${t.done?'checked':''} onchange="toggleTask('${String(t.id)}')" aria-label="Mark task complete">
+      <div class="list-item-main">
+        <div class="list-item-title">${escapeTaskText(t.text)}</div>
+        <div class="list-item-meta">${t.due?`Due ${formatTaskDate(t.due)} · `:''}${t.priority} priority</div>
+      </div>
+      <span class="list-category">${escapeTaskText(t.category)}</span>
+      <button class="list-delete" onclick="deleteTask('${String(t.id)}')" title="Delete task">×</button>
+    </div>`;
+  content.innerHTML=`
+    <div class="topline"><span class="date">${today}</span><span class="avatar">✧</span></div>
+    <h1 class="view-title">My little lists</h1>
+    <p class="subtitle">A place for all the little things you want to do. No rush, one step at a time.</p>
+    <section class="list-welcome">
+      <h2>${open===0&&tasks.length?'Look at you, all caught up ♡':'A little progress is still progress.'}</h2>
+      <p>${tasks.length?`${done} of ${tasks.length} tasks completed. Keep going at your own pace.`:'Start with one small thing you would like to get done.'}</p>
+      <div class="list-progress"><div class="list-progress-fill" style="width:${percent}%"></div></div>
+    </section>
+    <div class="list-stats">
+      <div class="list-stat"><strong>${tasks.length}</strong><span>Total tasks</span></div>
+      <div class="list-stat"><strong>${open}</strong><span>To do</span></div>
+      <div class="list-stat"><strong>${done}</strong><span>Completed</span></div>
+    </div>
+    <section class="list-add">
+      <h3 style="font:500 18px 'Playfair Display',serif;margin:0 0 12px;color:#70534f">Add a little task ♡</h3>
+      <div class="list-add-row">
+        <input id="newTask" maxlength="140" placeholder="What would you like to get done?">
+        <button class="action" style="margin:0" onclick="addTask()">Add to my list +</button>
+      </div>
+      <div class="list-add-bottom">
+        <select id="taskCategory" aria-label="Task category">
+          ${taskCategories.map(c=>`<option>${c}</option>`).join('')}
+        </select>
+        <input id="taskDue" type="date" aria-label="Due date">
+        <select id="taskPriority" aria-label="Task priority">
+          <option>Normal</option><option>Important</option><option>Whenever</option>
+        </select>
+      </div>
+    </section>
+    <div class="list-tabs">
+      ${[['all','Everything'],['open','To do'],['done','Completed'],...taskCategories.map(c=>[c,c])].map(([value,label])=>`<button class="${taskFilter===value?'active':''}" onclick="setTaskFilter('${value}')">${label}</button>`).join('')}
+    </div>
+    <div id="taskGroups">
+      ${active.length?`<h2 class="list-section-title">Still to do</h2>${active.map(renderItem).join('')}`:''}
+      ${completed.length?`<h2 class="list-section-title">Nicely done ♡</h2>${completed.map(renderItem).join('')}`:''}
+      ${!visible.length?`<div class="list-empty">${taskFilter==='done'?'No completed tasks here yet. You’ll get there ♡':'Nothing on this list just yet. Add a little task above.'}</div>`:''}
+    </div>
+  `;
+  const input=document.getElementById('newTask');
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')addTask();});
+}
+function escapeTaskText(value){
+  return String(value).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+function formatTaskDate(date){
+  return new Date(date+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'});
+}
+const moodChoices=[
+  {emoji:'🥰',name:'Amazing'},
+  {emoji:'😊',name:'Happy'},
+  {emoji:'😌',name:'Calm'},
+  {emoji:'😐',name:'Okay'},
+  {emoji:'😔',name:'Sad'},
+  {emoji:'😣',name:'Stressed'},
+  {emoji:'😴',name:'Tired'},
+  {emoji:'🥺',name:'Anxious'}
+];
+
+function getMoods(){
+  return JSON.parse(localStorage.getItem('daydream-moods')||'{}');
+}
+
+function renderMood(){
+  const moods=getMoods();
+  const year=moodMonth.getFullYear();
+  const month=moodMonth.getMonth();
+  const monthName=moodMonth.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+  const firstDay=new Date(year,month,1);
+  const days=new Date(year,month+1,0).getDate();
+  const offset=(firstDay.getDay()+6)%7;
+  const selected=moods[selectedMoodDate]||{emoji:'',note:''};
+
+  content.innerHTML=`
+    <div class="topline">
+      <span class="date">${today}</span>
+      <span class="avatar">🌷</span>
+    </div>
+    <h1 class="view-title">How are you feeling?</h1>
+    <p class="subtitle">Every feeling deserves a little space here.</p>
+
+    <section class="card">
+      <h3>Today's little check-in ♡</h3>
+      <p>Take a moment for yourself. There's no wrong answer.</p>
+      <div class="mood-options">
+        ${moodChoices.map(m=>`
+          <button class="mood-choice ${selected.emoji===m.emoji?'selected':''}"
+            onclick="chooseMood('${m.emoji}')"
+            title="${m.name}">${m.emoji}</button>
+        `).join('')}
+      </div>
+      <p id="moodName" style="color:#9e6269;font-size:13px">
+        ${selected.emoji?(moodChoices.find(m=>m.emoji===selected.emoji)?.name||'Mood selected'):'Choose how you feel today'}
+      </p>
+      <label class="field-label" for="moodNote">A little note about your day</label>
+      <textarea id="moodNote" placeholder="What made you feel this way? Anything on your mind?" style="min-height:110px"></textarea>
+      <button class="action" onclick="saveMood()">Save my mood ♡</button>
+    </section>
+
+    <section class="mood-calendar">
+      <div class="calendar-header">
+        <button onclick="changeMoodMonth(-1)">←</button>
+        <h3>${monthName}</h3>
+        <button onclick="changeMoodMonth(1)">→</button>
+      </div>
+      <div class="calendar-grid">
+        ${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d=>`<div class="calendar-day">${d}</div>`).join('')}
+        ${Array.from({length:offset},()=>'<div></div>').join('')}
+        ${Array.from({length:days},(_,i)=>{
+          const day=i+1;
+          const date=`${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+          const mood=moods[date];
+          return `<button class="calendar-date ${date===selectedMoodDate?'selected':''} ${date===localDate()?'today':''}"
+            onclick="selectMoodDate('${date}')">${mood?.emoji||day}</button>`;
+        }).join('')}
+      </div>
+      <p class="save-note">Tap a day to see or add its mood.</p>
+    </section>
+
+    <h2 class="view-title" style="font-size:24px;margin-top:28px">Your mood memories</h2>
+    <div class="mood-summary" id="moodSummary"></div>
+  `;
+
+  document.getElementById('moodNote').value=selected.note||'';
+  renderMoodSummary();
+}
+
+function chooseMood(emoji){
+  const moods=getMoods();
+  const noteField=document.getElementById('moodNote');
+  const current=moods[selectedMoodDate]||{emoji:'',note:''};
+  current.emoji=emoji;
+  if(noteField) current.note=noteField.value;
+  moods[selectedMoodDate]=current;
+  localStorage.setItem('daydream-moods',JSON.stringify(moods));
+  renderMood();
+}
+
+function selectMoodDate(date){
+  selectedMoodDate=date;
+  selectedMoodValue='';
+  renderMood();
+}
+
+function saveMood(){
+  const moods=getMoods();
+  const note=document.getElementById('moodNote').value;
+  const existing=moods[selectedMoodDate]||{emoji:'',note:''};
+
+  if(!existing.emoji&&!note.trim()){
+    alert('Choose a mood or write a little note first ♡');
+    return;
+  }
+
+  moods[selectedMoodDate]={emoji:existing.emoji,note};
+  localStorage.setItem('daydream-moods',JSON.stringify(moods));
+  renderMood();
+}
+
+function changeMoodMonth(amount){
+  moodMonth=new Date(moodMonth.getFullYear(),moodMonth.getMonth()+amount,1);
+  renderMood();
+}
+
+function renderMoodSummary(){
+  const moods=getMoods();
+  const counts={};
+  Object.values(moods).forEach(m=>{
+    if(m.emoji) counts[m.emoji]=(counts[m.emoji]||0)+1;
+  });
+
+  const summary=document.getElementById('moodSummary');
+  const total=Object.values(counts).reduce((a,b)=>a+b,0);
+
+  summary.innerHTML=total
+    ?Object.entries(counts).map(([emoji,count])=>{
+      const name=moodChoices.find(m=>m.emoji===emoji)?.name||'Mood';
+      return `<div class="mood-stat">${emoji} ${name}: <strong>${count}</strong></div>`;
+    }).join('')
+    :'<p class="save-note">Your mood memories will appear here as you check in ♡</p>';
+}
+
+// -------------------- PERIOD / CYCLE TRACKER --------------------
+let cycleMonth=new Date();
+let selectedCycleDate=localDate();
+
+function getCycleData(){
+  return JSON.parse(localStorage.getItem('daydream-cycle')||'{"starts":[],"cycleLength":28,"periodLength":5,"notes":{}}');
+}
+function saveCycleData(data){
+  localStorage.setItem('daydream-cycle',JSON.stringify(data));
+}
+function shiftDate(date,days){
+  const d=new Date(date+'T12:00:00');
+  d.setDate(d.getDate()+days);
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function formatDate(date){
+  return new Date(date+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+}
+function cycleActualDates(data){
+  const set=new Set();
+  data.starts.forEach(start=>{
+    for(let i=0;i<Number(data.periodLength||5);i++)set.add(shiftDate(start,i));
+  });
+  return set;
+}
+function cyclePredictedDates(data){
+  const set=new Set();
+  if(!data.starts.length)return set;
+  const latest=[...data.starts].sort().at(-1);
+  const cycle=Number(data.cycleLength)||28;
+  let next=shiftDate(latest,cycle);
+  const todayKey=localDate();
+  // Show the next two estimated periods, starting after the most recently logged one.
+  for(let n=0;n<2;n++){
+    for(let i=0;i<Number(data.periodLength||5);i++)set.add(shiftDate(next,i));
+    next=shiftDate(next,cycle);
+  }
+  return set;
+}
+function renderCycle(){
+  const data=getCycleData();
+  const year=cycleMonth.getFullYear(), month=cycleMonth.getMonth();
+  const monthName=cycleMonth.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+  const first=new Date(year,month,1);
+  const days=new Date(year,month+1,0).getDate();
+  const offset=(first.getDay()+6)%7;
+  const actual=cycleActualDates(data), predicted=cyclePredictedDates(data);
+  const selectedIsStart=data.starts.includes(selectedCycleDate);
+  const starts=[...data.starts].sort();
+  const latest=starts.at(-1);
+  const next=latest?shiftDate(latest,Number(data.cycleLength)||28):null;
+  const daysUntil=next?Math.round((new Date(next+'T12:00:00')-new Date(localDate()+'T12:00:00'))/86400000):null;
+  const selectedNote=(data.notes||{})[selectedCycleDate]||'';
+
+  content.innerHTML=`
+    <div class="topline"><span class="date">${today}</span><span class="avatar">🌷</span></div>
+    <h1 class="view-title">My cycle</h1>
+    <p class="subtitle">A gentle place to keep track of your cycle and how you're feeling.</p>
+
+    <section class="cycle-prediction">
+      <h3>${next?'Your next period estimate':'Your cycle journey starts here ♡'}</h3>
+      <p>${next?`Based on your latest logged start, your next period may begin around <strong>${formatDate(next)}</strong>${daysUntil>=0?` (about ${daysUntil} days from now).`:' (this estimate has passed).'} This is only an estimate.`:'Log the first day of your period below to begin seeing cycle estimates.'}</p>
+    </section>
+    <div class="list-stats">
+      <div class="list-stat"><strong>${latest?formatDate(latest).replace(/, \d{4}/,''):'—'}</strong><span>Last period started</span></div>
+      <div class="list-stat"><strong>${next?(daysUntil>=0?daysUntil+' days':'—'):'—'}</strong><span>Until estimate</span></div>
+      <div class="list-stat"><strong>${latest?Math.max(1,Math.round((new Date(localDate()+'T12:00:00')-new Date(latest+'T12:00:00'))/86400000)+1):'—'}</strong><span>Cycle day (approx.)</span></div>
+    </div>
+    <h2 class="list-section-title">Your cycle calendar</h2>
+    <section class="mood-calendar">
+      <div class="calendar-header">
+        <button onclick="changeCycleMonth(-1)">←</button>
+        <h3>${monthName}</h3>
+        <button onclick="changeCycleMonth(1)">→</button>
+      </div>
+      <div class="calendar-grid">
+        ${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d=>`<div class="calendar-day">${d}</div>`).join('')}
+        ${Array.from({length:offset},()=>'<div></div>').join('')}
+        ${Array.from({length:days},(_,i)=>{
+          const day=i+1;
+          const date=`${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+          const classes=['calendar-date','cycle-date'];
+          if(actual.has(date))classes.push('actual');
+          if(predicted.has(date)&&!actual.has(date))classes.push('predicted');
+          if(starts.includes(date))classes.push('start');
+          if(date===selectedCycleDate)classes.push('selected');
+          if(date===localDate())classes.push('today');
+          return `<button class="${classes.join(' ')}" onclick="selectCycleDate('${date}')">${day}</button>`;
+        }).join('')}
+      </div>
+      <div class="cycle-legend">
+        <span><i class="legend-dot" style="background:#eac9c5"></i>Logged period</span>
+        <span><i class="legend-dot" style="background:#f1e8e4"></i>Estimated period</span>
+        <span><i class="legend-dot" style="background:#bd7895"></i>Period start</span>
+      </div>
+      <div class="cycle-selected">
+        <p><strong>${formatDate(selectedCycleDate)}</strong></p>
+        <p>${selectedIsStart?'This date is saved as a period start.':actual.has(selectedCycleDate)?'This date is within a logged period.':'Selected date'}</p>
+        <div class="cycle-action-row">
+          <button class="action" onclick="togglePeriodStart()">${selectedIsStart?'Remove period start':'Mark as period start ♡'}</button>
+        </div>
+        <div class="cycle-note">
+          <label class="field-label" for="cycleNote">Symptoms or notes for this day</label>
+          <textarea id="cycleNote" placeholder="Cramps, energy, skin, mood...">${selectedNote.replace(/</g,'&lt;')}</textarea>
+          <button class="action secondary" onclick="saveCycleNote()">Save note</button>
+        </div>
+      </div>
+    </section>
+
+    <h2 class="list-section-title">Cycle preferences</h2>
+    <p class="save-note">Adjust these to match your usual cycle. You can change them whenever you need.</p>
+    <div class="cycle-controls">
+      <section class="card">
+        <h3>Cycle length</h3>
+        <p>How many days from one period start to the next?</p>
+        <input id="cycleLength" type="number" min="15" max="60" value="${data.cycleLength||28}">
+      </section>
+      <section class="card">
+        <h3>Period duration</h3>
+        <p>How many days does your period usually last?</p>
+        <input id="periodLength" type="number" min="1" max="15" value="${data.periodLength||5}">
+      </section>
+    </div>
+    <button class="action" onclick="saveCycleSettings()">Save cycle settings ♡</button>
+    <p class="save-note" style="margin-top:14px">${starts.length} period ${starts.length===1?'start':'starts'} logged. Your entries stay in this browser on this device.</p>
+    <p class="save-note">Cycle predictions can vary from month to month and are not contraception or medical advice.</p>
+  `;
+}
+function selectCycleDate(date){selectedCycleDate=date;renderCycle();}
+function changeCycleMonth(amount){cycleMonth=new Date(cycleMonth.getFullYear(),cycleMonth.getMonth()+amount,1);renderCycle();}
+function togglePeriodStart(){
+  const data=getCycleData();
+  if(data.starts.includes(selectedCycleDate))data.starts=data.starts.filter(d=>d!==selectedCycleDate);
+  else data.starts.push(selectedCycleDate);
+  data.starts=[...new Set(data.starts)].sort();
+  saveCycleData(data);renderCycle();
+}
+function saveCycleNote(){
+  const data=getCycleData();
+  data.notes=data.notes||{};
+  const note=document.getElementById('cycleNote').value;
+  if(note.trim())data.notes[selectedCycleDate]=note;
+  else delete data.notes[selectedCycleDate];
+  saveCycleData(data);
+  renderCycle();
+}
+function saveCycleSettings(){
+  const data=getCycleData();
+  const cycle=Number(document.getElementById('cycleLength').value);
+  const duration=Number(document.getElementById('periodLength').value);
+  if(!Number.isInteger(cycle)||cycle<15||cycle>60){alert('Please enter a cycle length between 15 and 60 days.');return;}
+  if(!Number.isInteger(duration)||duration<1||duration>15){alert('Please enter a period duration between 1 and 15 days.');return;}
+  data.cycleLength=cycle;data.periodLength=duration;
+  saveCycleData(data);renderCycle();
+}
+
+// -------------------- FOCUS TIMER --------------------
+let focusInterval=null;
+function getFocusState(){
+  return JSON.parse(localStorage.getItem('daydream-focus')||'{"mode":"focus","duration":1500,"remaining":1500,"running":false,"endsAt":null,"task":""}');
+}
+function saveFocusState(state){localStorage.setItem('daydream-focus',JSON.stringify(state));}
+function focusRemaining(state){
+  return state.running&&state.endsAt?Math.max(0,Math.ceil((state.endsAt-Date.now())/1000)):state.remaining;
+}
+function formatTimer(seconds){
+  const m=Math.floor(seconds/60),s=seconds%60;
+  return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+function renderFocus(){
+  if(focusInterval){clearInterval(focusInterval);focusInterval=null;}
+  const state=getFocusState();
+  state.remaining=focusRemaining(state);
+  if(state.running&&state.remaining<=0){state.running=false;state.endsAt=null;saveFocusState(state);}
+  const minutes=state.duration/60;
+  const task=state.task||'';
+  content.innerHTML=`
+    <div class="topline"><span class="date">${today}</span><span class="avatar">✧</span></div>
+    <h1 class="view-title">A little focus time</h1>
+    <p class="subtitle">One thing at a time. You've got this.</p>
+    <div class="focus-wrap">
+      <div class="focus-presets">
+        <button class="${state.mode==='focus'&&minutes===25?'active':''}" onclick="setFocusPreset('focus',25)">25 / 5</button>
+        <button class="${state.mode==='focus'&&minutes===50?'active':''}" onclick="setFocusPreset('focus',50)">50 / 10</button>
+      </div>
+      <div class="focus-orb">
+        <div class="focus-time" id="focusClock">${formatTimer(state.remaining)}</div>
+        <div class="focus-label" id="focusModeLabel">${state.mode==='break'?'Little break':'Focus session'}</div>
+      </div>
+      <div class="focus-buttons">
+        ${state.running?'<button class="action" onclick="pauseFocus()">Pause</button>':'<button class="action" onclick="startFocus()">Start</button>'}
+        <button class="action secondary" onclick="resetFocus()">Reset</button>
+        <button class="action secondary" onclick="switchFocusMode()">${state.mode==='focus'?'Take a break':'Back to focus'}</button>
+      </div>
+      <p class="focus-complete" id="focusComplete">${state.remaining===0?'Session complete. Take a little breath ♡':''}</p>
+      <div class="focus-task">
+        <label for="focusTask">What would you like to focus on?</label>
+        <input id="focusTask" maxlength="120" placeholder="One little thing..." value="">
+      </div>
+    </div>
+  `;
+  document.getElementById('focusTask').value=task;
+  if(state.running)focusInterval=setInterval(tickFocus,250);
+}
+function tickFocus(){
+  const state=getFocusState();
+  const remaining=focusRemaining(state);
+  const clock=document.getElementById('focusClock');
+  if(!clock){clearInterval(focusInterval);focusInterval=null;return;}
+  clock.textContent=formatTimer(remaining);
+  if(remaining<=0){
+    state.remaining=0;state.running=false;state.endsAt=null;saveFocusState(state);
+    clearInterval(focusInterval);focusInterval=null;
+    document.getElementById('focusModeLabel').textContent='All done';
+    document.getElementById('focusComplete').textContent='Session complete. Take a little breath ♡';
+    const buttons=document.querySelector('.focus-buttons');
+    buttons.innerHTML='<button class="action" onclick="switchFocusMode()">Start a little break</button><button class="action secondary" onclick="resetFocus()">Start again</button>';
+  }else{
+    state.remaining=remaining;saveFocusState(state);
+  }
+}
+function setFocusPreset(mode,minutes){
+  const state=getFocusState();
+  state.mode=mode;state.duration=minutes*60;state.remaining=minutes*60;state.running=false;state.endsAt=null;
+  saveFocusState(state);renderFocus();
+}
+function startFocus(){
+  const state=getFocusState();
+  const task=document.getElementById('focusTask');
+  if(task)state.task=task.value;
+  if(state.remaining<=0)state.remaining=state.duration;
+  state.running=true;state.endsAt=Date.now()+state.remaining*1000;
+  saveFocusState(state);renderFocus();
+}
+function pauseFocus(){
+  const state=getFocusState();
+  state.remaining=focusRemaining(state);state.running=false;state.endsAt=null;
+  const task=document.getElementById('focusTask');
+  if(task)state.task=task.value;
+  saveFocusState(state);renderFocus();
+}
+function resetFocus(){
+  const state=getFocusState();
+  state.remaining=state.duration;state.running=false;state.endsAt=null;
+  saveFocusState(state);renderFocus();
+}
+function switchFocusMode(){
+  const state=getFocusState();
+  state.mode=state.mode==='focus'?'break':'focus';
+  state.duration=(state.mode==='focus'?25:5)*60;
+  state.remaining=state.duration;state.running=false;state.endsAt=null;
+  const task=document.getElementById('focusTask');
+  if(task)state.task=task.value;
+  saveFocusState(state);renderFocus();
+}
+
+showPage('home',document.querySelector('.nav button'));
+</script>
+</body>
+</html>
